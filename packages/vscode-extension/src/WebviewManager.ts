@@ -93,7 +93,7 @@ export class WebviewManager implements vscode.Disposable {
   }
 
   private sendCurrentTheme(): void {
-    const theme = vscode.workspace.getConfiguration('markora.theme').get<string>('document', 'follow-vscode');
+    const theme = vscode.workspace.getConfiguration('markora.theme').get<string>('document', 'classic-white');
     this.send({ type: 'theme.set', theme, vscodeTheme: this.currentVsCodeTheme() });
   }
 

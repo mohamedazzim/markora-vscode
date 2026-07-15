@@ -157,8 +157,8 @@
             "midnight",
             "high-contrast"
           ],
-          "default": "follow-vscode",
-          "description": "Document theme used by the visual editor."
+          "default": "classic-white",
+          "description": "Document theme used by the visual editor. Classic White matches the calm, white Typora-style writing surface."
         },
         "markora.theme.followVsCode": {
           "type": "boolean",

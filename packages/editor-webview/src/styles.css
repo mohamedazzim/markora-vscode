@@ -1,22 +1,52 @@
 :root {
-  color-scheme: light dark;
-  --doc-bg: var(--vscode-editor-background, #fff);
-  --doc-text: var(--vscode-editor-foreground, #25282b);
-  --doc-muted: var(--vscode-descriptionForeground, #687078);
-  --doc-border: var(--vscode-editorWidget-border, #dfe3e6);
-  --doc-accent: var(--vscode-textLink-foreground, #1f7a4d);
-  --doc-code: var(--vscode-textCodeBlock-background, #f5f7f8);
-  --doc-selection: var(--vscode-editor-selectionBackground, #d9eee2);
-  --doc-quote: var(--vscode-textPreformat-foreground, #6b747b);
+  color-scheme: light;
+  --doc-bg: #ffffff;
+  --doc-surface: #ffffff;
+  --doc-toolbar: #ffffff;
+  --doc-text: #2b2b2b;
+  --doc-heading: #202124;
+  --doc-muted: #687078;
+  --doc-border: #e5e7eb;
+  --doc-accent: #4183c4;
+  --doc-link: #4183c4;
+  --doc-code: #f6f8fa;
+  --doc-code-text: #24292f;
+  --doc-selection: #cfe8ff;
+  --doc-quote: #6b747b;
+  --doc-table-header: #f6f8fa;
 }
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
-  background: var(--vscode-editor-background, #fff);
-  color: var(--vscode-editor-foreground, #25282b);
+  background: #ffffff;
+  color: #2b2b2b;
   font-family: var(--vscode-font-family, system-ui, sans-serif);
+}
+.theme-follow-vscode {
+  color-scheme: var(--vscode-color-scheme, light);
+  --doc-bg: var(--vscode-editor-background, #ffffff);
+  --doc-surface: var(--vscode-editor-background, #ffffff);
+  --doc-toolbar: var(--vscode-editor-background, #ffffff);
+  --doc-text: var(--vscode-editor-foreground, #2b2b2b);
+  --doc-heading: var(--vscode-editor-foreground, #202124);
+  --doc-muted: var(--vscode-descriptionForeground, #687078);
+  --doc-border: var(--vscode-editorWidget-border, #e5e7eb);
+  --doc-accent: var(--vscode-textLink-foreground, #4183c4);
+  --doc-link: var(--vscode-textLink-foreground, #4183c4);
+  --doc-code: var(--vscode-textCodeBlock-background, #f6f8fa);
+  --doc-code-text: var(--vscode-editor-foreground, #24292f);
+  --doc-selection: var(--vscode-editor-selectionBackground, #cfe8ff);
+  --doc-quote: var(--vscode-textPreformat-foreground, #6b747b);
+  --doc-table-header: var(--vscode-textCodeBlock-background, #f6f8fa);
+}
+.theme-follow-vscode.vscode-dark,
+.theme-follow-vscode.vscode-high-contrast {
+  color-scheme: dark;
+}
+.theme-classic-white {
+  color-scheme: light;
 }
 .markora-webview {
   min-height: 100vh;
@@ -30,8 +60,8 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px max(14px, calc((100% - var(--content-width, 956px)) / 2));
-  background: color-mix(in srgb, var(--doc-bg) 94%, var(--doc-text));
+  padding: 10px max(18px, calc((100% - var(--content-width, 860px)) / 2));
+  background: var(--doc-toolbar);
   border-bottom: 1px solid var(--doc-border);
 }
 .wordmark {
@@ -70,15 +100,16 @@ body {
 }
 .document-surface {
   min-height: calc(100vh - 46px);
+  background: var(--doc-surface);
 }
 .tiptap {
-  width: min(100%, var(--content-width, 956px));
+  width: min(100%, var(--content-width, 860px));
   min-height: calc(100vh - 46px);
   margin: 0 auto;
-  padding: 58px 48px 180px;
+  padding: 72px 48px 180px;
   outline: none;
   font-size: var(--vscode-editor-font-size, 16px);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 .tiptap > :first-child {
   margin-top: 0;
@@ -89,22 +120,38 @@ body {
 .tiptap h4,
 .tiptap h5,
 .tiptap h6 {
-  color: var(--doc-text);
+  color: var(--doc-heading);
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  font-weight: 700;
 }
 .tiptap h1 {
   border-bottom: 1px solid var(--doc-border);
   padding-bottom: 0.35em;
+  margin: 0 0 0.8em;
+  font-size: 2.35rem;
+}
+.tiptap h2 {
+  margin-top: 1.8em;
+  font-size: 1.7rem;
+}
+.tiptap h3 {
+  margin-top: 1.45em;
+  font-size: 1.35rem;
 }
 .tiptap p {
-  margin: 0 0 1em;
+  max-width: 78ch;
+  margin: 0 0 1.15em;
   min-height: 1.4em;
 }
 .tiptap a {
-  color: var(--doc-accent);
+  color: var(--doc-link);
   text-decoration: underline;
   text-underline-offset: 0.15em;
+}
+.tiptap strong {
+  color: var(--doc-heading);
+  font-weight: 700;
 }
 .tiptap blockquote {
   margin: 1.2em 0;
@@ -122,14 +169,14 @@ body {
 .tiptap pre {
   padding: 1em;
   overflow: auto;
-  color: var(--doc-text);
+  color: var(--doc-code-text);
   background: var(--doc-code);
   border: 1px solid var(--doc-border);
   border-radius: 7px;
 }
 .tiptap code {
   padding: 0.12em 0.35em;
-  color: var(--doc-text);
+  color: var(--doc-code-text);
   background: var(--doc-code);
   border-radius: 4px;
   font-family: var(--vscode-editor-font-family, monospace);
@@ -150,7 +197,7 @@ body {
   border: 1px solid var(--doc-border);
 }
 .tiptap th {
-  background: color-mix(in srgb, var(--doc-code) 75%, var(--doc-bg));
+  background: var(--doc-table-header);
 }
 .tiptap img {
   max-width: 100%;

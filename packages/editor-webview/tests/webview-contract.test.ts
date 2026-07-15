@@ -9,5 +9,7 @@ describe('editor webview contract', () => {
     expect(source).toContain('aria-label="Markora visual Markdown editor"');
     expect(source).toContain('enableSlashCommands');
     expect(source).toContain('Insert table');
+    expect(source).toContain("useState<DocumentTheme>('classic-white')");
+    expect(source).toContain('theme-${theme}');
   });
 });

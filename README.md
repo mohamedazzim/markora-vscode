@@ -15,7 +15,7 @@ configured before a VSIX can be published; placeholders are intentionally retain
 - Structured editing for headings, paragraphs, emphasis, links, images, lists, tasks, quotes, code,
   tables, math blocks, Mermaid fences, and horizontal rules.
 - Native VS Code Source Mode through **Markora: Open Source Editor**.
-- Document themes: Classic White, Paper, Academic, Sepia, Graphite, Midnight, High Contrast, or follow VS Code.
+- Document themes: **Classic White (the default)**, Paper, Academic, Sepia, Graphite, Midnight, High Contrast, or follow VS Code.
 - Offline core editing, strict webview CSP, validated messages, sanitized HTML, and no telemetry by default.
 - Reversible Markdown round trips; unsupported constructs remain text in Source Mode.
 

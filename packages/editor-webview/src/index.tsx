@@ -38,7 +38,7 @@ const extensions = [
 
 function App(): React.JSX.Element {
   const [version, setVersion] = useState(0);
-  const [theme, setTheme] = useState<DocumentTheme>('follow-vscode');
+  const [theme, setTheme] = useState<DocumentTheme>('classic-white');
   const [vscodeTheme, setVsCodeTheme] = useState<'light' | 'dark' | 'high-contrast'>('light');
   const [message, setMessage] = useState('');
   const [slashOpen, setSlashOpen] = useState(false);
@@ -124,19 +124,25 @@ function App(): React.JSX.Element {
   const style = tokens
     ? ({
         '--doc-bg': tokens.background,
+        '--doc-surface': tokens.surface,
+        '--doc-toolbar': tokens.toolbar,
         '--doc-text': tokens.text,
+        '--doc-heading': tokens.heading,
         '--doc-muted': tokens.muted,
         '--doc-border': tokens.border,
         '--doc-accent': tokens.accent,
+        '--doc-link': tokens.link,
         '--doc-code': tokens.code,
+        '--doc-code-text': tokens.codeText,
         '--doc-selection': tokens.selection,
         '--doc-quote': tokens.quote,
+        '--doc-table-header': tokens.tableHeader,
       } as React.CSSProperties)
     : undefined;
   const exec = (command: string, payload?: unknown) =>
     vscode.postMessage({ type: 'command.execute', command, payload });
   return (
-    <main className={`markora-webview vscode-${vscodeTheme}`} style={style}>
+    <main className={`markora-webview theme-${theme} vscode-${vscodeTheme}`} style={style}>
       <header className="context-bar" aria-label="Markora document controls">
         <span className="wordmark">Markora</span>
         <button onClick={() => editor?.chain().focus().toggleBold().run()} aria-label="Bold">
@@ -176,7 +182,10 @@ function App(): React.JSX.Element {
             <option value="follow-vscode">Follow VS Code</option>
             {Object.keys(documentThemes).map((id) => (
               <option value={id} key={id}>
-                {id.replace('-', ' ')}
+                {id
+                  .split('-')
+                  .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+                  .join(' ')}
               </option>
             ))}
           </select>

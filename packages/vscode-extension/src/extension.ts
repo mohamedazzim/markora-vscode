@@ -28,7 +28,8 @@ async function openSource(uri?: vscode.Uri): Promise<void> {
   await vscode.commands.executeCommand('vscode.openWith', target, 'default', vscode.ViewColumn.Active);
 }
 
-export function activate(context: vscode.ExtensionContext): void {
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
+  await ensureClassicWhiteDefault();
   const provider = new MarkoraCustomEditorProvider(context);
   context.subscriptions.push(
     vscode.window.registerCustomEditorProvider(MarkoraCustomEditorProvider.viewType, provider, {
@@ -65,11 +66,21 @@ export function activate(context: vscode.ExtensionContext): void {
   command('markora.resetDocumentTheme', () =>
     vscode.workspace
       .getConfiguration('markora.theme')
-      .update('document', 'follow-vscode', vscode.ConfigurationTarget.Global),
+      .update('document', 'classic-white', vscode.ConfigurationTarget.Global),
   );
   command('markora.showDiagnostics', () =>
     vscode.commands.executeCommand('workbench.action.showRuntimeExtensions'),
   );
+}
+
+async function ensureClassicWhiteDefault(): Promise<void> {
+  const configuration = vscode.workspace.getConfiguration('markora.theme');
+  const inspection = configuration.inspect<string>('document');
+  const hasExplicitTheme =
+    inspection?.globalValue !== undefined || inspection?.workspaceFolderValue !== undefined;
+  if (!hasExplicitTheme && configuration.get<string>('document') === 'follow-vscode') {
+    await configuration.update('document', 'classic-white', vscode.ConfigurationTarget.Global);
+  }
 }
 
 async function sendCommand(command: string): Promise<void> {

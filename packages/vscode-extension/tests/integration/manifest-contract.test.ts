@@ -38,4 +38,13 @@ describe('extension manifest contract', () => {
       expect(commands.has(command)).toBe(true);
     }
   });
+
+  it('makes Classic White the default document theme', async () => {
+    const manifest = JSON.parse(await readFile(path.join(process.cwd(), 'package.json'), 'utf8')) as {
+      contributes: { configuration: { properties: Record<string, { default?: unknown }> } };
+    };
+    expect(manifest.contributes.configuration.properties['markora.theme.document'].default).toBe(
+      'classic-white',
+    );
+  });
 });
