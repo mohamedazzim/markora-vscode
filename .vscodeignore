@@ -1,4 +1,7 @@
 .github/**
+.codex/**
+AGENTS.md
+graphify-out/**
 .vscode/**
 docs/**
 packages/**
