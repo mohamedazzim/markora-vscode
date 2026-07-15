@@ -15,7 +15,12 @@ export default defineConfig({
   label: `Markora VS Code ${channel}`,
   files: 'packages/vscode-extension/tests/e2e/suite/index.js',
   version: channel,
-  extensionDevelopmentPath: path.resolve('.'),
+  // Allow the same suite to exercise either the working tree or an installed
+  // VSIX. This keeps Marketplace verification on the real packaged extension
+  // instead of silently falling back to development sources.
+  extensionDevelopmentPath: process.env.MARKORA_EXTENSION_PATH
+    ? path.resolve(process.env.MARKORA_EXTENSION_PATH)
+    : path.resolve('.'),
   workspaceFolder,
   mocha: {
     timeout: 30_000,

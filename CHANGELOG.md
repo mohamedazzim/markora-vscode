@@ -10,3 +10,5 @@
 - Added a 49-fixture Markdown round-trip matrix, runtime axe-core webview accessibility coverage, and a real isolated VS Code E2E harness.
 - Added stable/Insiders E2E scripts with isolated user-data and extension directories; the validated VSIX is ready for release.
 - Strict CSP, runtime message validation, safe URL policy, sanitized Markdown HTML, CI, packaging, and community files.
+- Published to the Visual Studio Marketplace as `MohamedAzzimJ.markora-markdown-editor` on 2026-07-15; the live listing and `0.1.0` installation were independently verified on 2026-07-16.
+- GitHub release [v0.1.0](https://github.com/mohamedazzim/markora-vscode/releases/tag/v0.1.0) is public. The published VSIX SHA-256 is `14c12ab70017f8f3209d04042cc111ff4aa301cd398971ce255d374909303dd3`.

@@ -1,11 +1,17 @@
 # Markora – Visual Markdown Editor for VS Code
 
+[![Marketplace version](https://img.shields.io/visual-studio-marketplace/v/MohamedAzzimJ.markora-markdown-editor?label=Marketplace)](https://marketplace.visualstudio.com/items?itemName=MohamedAzzimJ.markora-markdown-editor)
+[![Marketplace installs](https://img.shields.io/visual-studio-marketplace/i/MohamedAzzimJ.markora-markdown-editor?label=Installs)](https://marketplace.visualstudio.com/items?itemName=MohamedAzzimJ.markora-markdown-editor)
+[![GitHub release](https://img.shields.io/github/v/release/mohamedazzim/markora-vscode?display_name=tag&sort=semver)](https://github.com/mohamedazzim/markora-vscode/releases)
+[![CI](https://github.com/mohamedazzim/markora-vscode/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mohamedazzim/markora-vscode/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/mohamedazzim/markora-vscode)](https://github.com/mohamedazzim/markora-vscode/blob/main/LICENSE)
+
 An open-source visual Markdown editor for Visual Studio Code. Markora adds a focused, Typora-inspired
 writing surface inside VS Code while keeping VS Code's `TextDocument` authoritative for saving, undo,
 source control, hot exit, diffing, remote workspaces, and file watching.
 
-This repository is the `0.1.0` release candidate. Marketplace metadata is configured for publisher
-`MohamedAzzimJ` and the public source repository is `mohamedazzim/markora-vscode`.
+This repository contains the published `0.1.0` release. The Marketplace publisher is `MohamedAzzimJ`
+and the public source repository is `mohamedazzim/markora-vscode`.
 
 ![Markora document icon](media/icon.png)
 
@@ -21,7 +27,13 @@ This repository is the `0.1.0` release candidate. Marketplace metadata is config
 
 ## Install
 
-From a verified VSIX:
+Install the published extension directly from the Marketplace:
+
+```powershell
+code --install-extension MohamedAzzimJ.markora-markdown-editor
+```
+
+Or install the verified release VSIX:
 
 ```powershell
 code --install-extension .\markora-markdown-editor-0.1.0.vsix
@@ -29,6 +41,14 @@ code --install-extension .\markora-markdown-editor-0.1.0.vsix
 
 Open a Markdown file, right-click its tab, choose **Reopen Editor With…**, then select **Markora Visual Editor**.
 To make it the default, choose **Configure Default Editor for…** in that same picker.
+
+## Public links
+
+- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MohamedAzzimJ.markora-markdown-editor)
+- [GitHub repository](https://github.com/mohamedazzim/markora-vscode)
+- [GitHub releases](https://github.com/mohamedazzim/markora-vscode/releases)
+- [Issue tracker](https://github.com/mohamedazzim/markora-vscode/issues)
+- [Security reporting](https://github.com/mohamedazzim/markora-vscode/security/advisories/new)
 
 ## Commands
 
@@ -57,6 +77,13 @@ npm run package:vsix
 
 The desktop Electron application is private and is not a dependency of this repository. See
 [docs/DESKTOP_CODE_REUSE_AUDIT.md](docs/DESKTOP_CODE_REUSE_AUDIT.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Marketplace presentation
+
+The Marketplace listing includes the original Markora icon, README, MIT license, changelog, repository and
+issue links. A screenshot gallery is not included in `0.1.0`; the README intentionally does not embed private
+desktop screenshots or images containing local paths. A screenshot gallery is planned for a future release after
+capturing a clean, public-safe VS Code profile.
 
 ## Limitations
 
