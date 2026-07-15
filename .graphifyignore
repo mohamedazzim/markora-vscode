@@ -1,0 +1,10 @@
+# Keep the project knowledge graph focused on authored source and documentation.
+.codex/**
+graphify-out/**
+node_modules/**
+dist/**
+release/**
+.git/**
+.vscode-test/**
+coverage/**
+test-results/**

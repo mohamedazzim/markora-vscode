@@ -7,3 +7,10 @@ test-results/
 .env
 .env.*
 !.env.example
+
+# Graphify keeps the persistent project map in graphify-out/. Only the
+# checked-in graph artifacts are retained; extraction caches are disposable.
+graphify-out/.graphify_*
+graphify-out/.needs_update
+graphify-out/cache/
+graphify-out/graphify-out/
