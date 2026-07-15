@@ -1,0 +1,4 @@
+# Keep generated bundles and source/docs formatting consistent across CI hosts.
+* text=auto eol=lf
+*.png binary
+*.vsix binary
