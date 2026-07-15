@@ -8,6 +8,15 @@ tests/**
 *.map
 *.ts
 *.tsx
+*.mjs
+*.cjs
+*.config.*
+*.ps1
+package-lock.json
+.gitignore
+.vscodeignore
+.prettierrc
+tsconfig.json
 !dist/**
 !media/icon.png
 !README.md
