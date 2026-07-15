@@ -68,6 +68,23 @@ export class WebviewManager implements vscode.Disposable {
           .getConfiguration('markora.theme')
           .update('document', parsed.data.payload, vscode.ConfigurationTarget.Workspace);
         this.sendCurrentTheme();
+      } else if (parsed.data.command === 'insertImage') {
+        const selected = await vscode.window.showOpenDialog({
+          canSelectMany: false,
+          openLabel: 'Insert Image',
+          filters: { Images: ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'] },
+        });
+        const image = selected?.[0];
+        if (image) {
+          this.send({
+            type: 'command.run',
+            command: 'insertImage',
+            payload: {
+              src: vscode.workspace.asRelativePath(image, false).replaceAll('\\', '/'),
+              alt: image.path.split(/[\\/]/).pop() ?? 'Image',
+            },
+          });
+        }
       } else this.send({ type: 'command.run', command: parsed.data.command, payload: parsed.data.payload });
       return;
     }

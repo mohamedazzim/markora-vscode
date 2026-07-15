@@ -70,6 +70,8 @@ export class DocumentSynchronizer implements vscode.Disposable {
     } finally {
       this.applying = false;
     }
+    this.lastSentVersion = -1;
+    this.sendDocument();
   }
 
   private sendDocument(): void {

@@ -21,5 +21,6 @@ describe('extension-host synchronization contract', () => {
     expect(source).toContain('lastAckTransaction');
     expect(source).toContain('documentVersion');
     expect(source).toContain('transactionId');
+    expect(source).toContain('this.lastSentVersion = -1');
   });
 });

@@ -83,18 +83,25 @@ async function getDocument(): Promise<vscode.TextDocument | undefined> {
 }
 
 async function insertImage(): Promise<void> {
-  if (WebviewManager.sendToActive('insertImage')) return;
-  const editor = vscode.window.activeTextEditor;
-  if (!editor || editor.document.languageId !== 'markdown') {
-    void vscode.window.showInformationMessage('Open a Markdown document in Markora first.');
-    return;
-  }
   const selected = await vscode.window.showOpenDialog({
     canSelectMany: false,
     openLabel: 'Insert Image',
     filters: { Images: ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'] },
   });
   const image = selected?.[0];
+  if (
+    image &&
+    WebviewManager.sendToActive('insertImage', {
+      src: vscode.workspace.asRelativePath(image, false).replaceAll('\\', '/'),
+      alt: image.path.split(/[\\/]/).pop() ?? 'Image',
+    })
+  )
+    return;
+  const editor = vscode.window.activeTextEditor;
+  if (!editor || editor.document.languageId !== 'markdown') {
+    void vscode.window.showInformationMessage('Open a Markdown document in Markora first.');
+    return;
+  }
   if (!image) return;
   const relative = vscode.workspace.asRelativePath(image, false).replaceAll('\\', '/');
   await editor.edit((builder) =>

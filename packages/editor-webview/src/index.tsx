@@ -98,7 +98,19 @@ function App(): React.JSX.Element {
             .toggleCodeBlock()
             .insertContent('```mermaid\nflowchart TD\n  A[Start] --> B[End]\n```')
             .run();
-        else if (incoming.command === 'setTheme' && typeof incoming.payload === 'string')
+        else if (
+          incoming.command === 'insertImage' &&
+          typeof incoming.payload === 'object' &&
+          incoming.payload &&
+          'src' in incoming.payload
+        ) {
+          const payload = incoming.payload as { src: string; alt?: string };
+          editor
+            ?.chain()
+            .focus()
+            .setImage({ src: payload.src, alt: payload.alt ?? '' })
+            .run();
+        } else if (incoming.command === 'setTheme' && typeof incoming.payload === 'string')
           setTheme(incoming.payload as DocumentTheme);
       } else if (incoming.type === 'error') setMessage(incoming.message);
     };
