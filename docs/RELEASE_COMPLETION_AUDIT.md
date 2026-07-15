@@ -25,7 +25,8 @@ The repository is a prerelease extension, not a published release. This audit re
 
 - GitHub owner: `mohamedazzim/markora-vscode` is public and `main` is pushed; CI and CodeQL pass on the release commit.
 - Marketplace publisher: `MohamedAzzimJ` is configured in `package.json`.
-- GitHub release is pending the final `v0.1.0` tag; Marketplace upload remains credential-gated.
+- GitHub release `v0.1.0` is published and its VSIX/checksum/release manifest were downloaded and independently verified.
+- Marketplace upload remains credential-gated: no `VSCE_PAT` or publisher login is configured in this environment.
 - Clean-profile installation and release upgrade testing require a successful VS Code launch and a real VSIX publisher field.
 
 ## Security and licensing

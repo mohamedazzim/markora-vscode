@@ -11,6 +11,8 @@
 - SHA-256 is recorded in `release\\SHA256SUMS.txt` and repeated in `release\\release-manifest.json`.
 - The VSIX installed successfully in the normal profile and in an isolated profile at
   `%TEMP%\markora-vscode-clean-profile`; both profiles reported `mohamedazzimj.markora-markdown-editor@0.1.0`.
+- GitHub Release: [v0.1.0](https://github.com/mohamedazzim/markora-vscode/releases/tag/v0.1.0), with the published VSIX,
+  checksum, release manifest, and third-party notices. The downloaded VSIX matched both published SHA-256 values.
 
-Remaining manual checks are Marketplace upload, clean-profile visual interaction screenshots, uninstall/reinstall,
-and upgrade testing against the prior published version.
+Remaining checks are Marketplace upload, clean-profile visual interaction screenshots, uninstall/reinstall, and
+upgrade testing against the prior published version.
