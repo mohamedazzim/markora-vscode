@@ -4,6 +4,9 @@ An open-source visual Markdown editor for Visual Studio Code. Markora adds a foc
 writing surface inside VS Code while keeping VS Code's `TextDocument` authoritative for saving, undo,
 source control, hot exit, diffing, remote workspaces, and file watching.
 
+This repository is a pre-release package (`0.1.0`). A real Marketplace publisher ID and GitHub owner must be
+configured before a VSIX can be published; placeholders are intentionally retained in `package.json`.
+
 ![Markora document icon](media/icon.png)
 
 ## Features
