@@ -3,7 +3,7 @@
   "displayName": "Markora – Visual Markdown Editor",
   "description": "An open-source visual Markdown editor for Visual Studio Code.",
   "version": "0.1.0",
-  "publisher": "<MARKETPLACE_PUBLISHER_ID>",
+  "publisher": "MohamedAzzimJ",
   "license": "MIT",
   "engines": {
     "vscode": "^1.90.0"
@@ -28,17 +28,18 @@
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/<GITHUB_OWNER>/markora-vscode.git"
+    "url": "https://github.com/mohamedazzim/markora-vscode.git"
   },
-  "homepage": "https://github.com/<GITHUB_OWNER>/markora-vscode",
+  "homepage": "https://github.com/mohamedazzim/markora-vscode",
   "bugs": {
-    "url": "https://github.com/<GITHUB_OWNER>/markora-vscode/issues"
+    "url": "https://github.com/mohamedazzim/markora-vscode/issues"
   },
   "galleryBanner": {
     "color": "#1f252e",
     "theme": "dark"
   },
   "activationEvents": [
+    "onStartupFinished",
     "onCustomEditor:markora.markdownVisualEditor",
     "onCommand:markora.openVisualEditor"
   ],
@@ -313,7 +314,7 @@
     "test:e2e:clean": "npm run clean && npm run test:e2e",
     "test:e2e:debug": "npm run build && vscode-test --grep Markora",
     "test:performance": "vitest run packages/markdown-core/tests/performance",
-    "package": "npm run build && vsce package --no-dependencies",
+    "package": "npm run build && node scripts/package.mjs",
     "package:vsix": "npm run package",
     "verify": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build && npm run manifest:check",
     "publish:check": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/publish-check.ps1"

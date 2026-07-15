@@ -21,7 +21,5 @@ if (!existsSync(manifest.icon)) throw new Error(`Marketplace icon is missing: ${
 if (manifest.contributes?.customEditors?.[0]?.viewType !== 'markora.markdownVisualEditor')
   throw new Error('Custom editor view type is incorrect.');
 console.log(`Manifest contract passed (${commands.size} commands, ${manifest.version}).`);
-if (/^<.*>$/.test(manifest.publisher))
-  console.log(
-    'Publisher placeholder detected; vsce packaging remains intentionally blocked until configured.',
-  );
+if (manifest.publisher !== 'MohamedAzzimJ')
+  throw new Error(`Unexpected Marketplace publisher: ${manifest.publisher}`);

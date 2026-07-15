@@ -4,13 +4,13 @@
 
 - VS Code detected: 1.128.0 (installed executable); Node.js 24.16.0; npm 11.13.0.
 - `npm ci`, typecheck, lint, format check, build, manifest check, unit/integration/webview/accessibility/
-  performance suites, and `npm audit --omit=dev --audit-level=high` passed.
-- The real `@vscode/test-cli` harness first attempted to download stable 1.128.1, but the download ended with
-  `ECONNRESET`. It then used the installed VS Code 1.128.0 executable; launch was blocked by the local update
-  mutex (`Code is currently being updated`). The E2E result is therefore **blocked**, not passed.
-- VSIX listing/package was blocked before file creation because `package.json.publisher` and repository owner are
-  intentionally placeholders. No installation, clean-profile, uninstall, or checksum claim is made.
+  performance suites, `npm run verify`, `npm run publish:check`, and `npm audit --omit=dev --audit-level=high` passed.
+- The real isolated `@vscode/test-cli` harness used portable VS Code 1.128.1 after a stale installed updater
+  process was stopped. All 16 Development Host tests passed.
+- VSIX package: `release\markora-markdown-editor-0.1.0.vsix` (15 production files, 3,210,909 bytes).
+- SHA-256: `0ea78420c237edd32538c0d45e3bb36b471cc4dea907c588574363d6e2767690`.
+- The VSIX installed successfully in the normal profile and in an isolated profile at
+  `%TEMP%\markora-vscode-clean-profile`; both profiles reported `mohamedazzimj.markora-markdown-editor@0.1.0`.
 
-Before the first release, repeat this document in an isolated VS Code profile after configuring the real publisher:
-Reopen Editor With..., visual edit, save, native source reopen, undo/redo, themes, math, Mermaid, image URI handling,
-uninstall, reinstall, and SHA-256 verification of the published VSIX.
+Remaining manual checks are Marketplace upload, clean-profile visual interaction screenshots, uninstall/reinstall,
+and upgrade testing against the prior published version.

@@ -1,4 +1,4 @@
 $ErrorActionPreference = 'Stop'
 npm run package:vsix
-$vsix = Get-ChildItem -Filter '*.vsix' | Select-Object -First 1
-Get-FileHash $vsix -Algorithm SHA256
+Get-Content release\SHA256SUMS.txt
+Get-Content release\release-manifest.json

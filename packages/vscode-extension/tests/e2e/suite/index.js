@@ -124,9 +124,11 @@ suite('Markora Extension Development Host', () => {
   test('persists and resets document theme configuration', async () => {
     const configuration = vscode.workspace.getConfiguration('markora.theme');
     await configuration.update('document', 'paper', vscode.ConfigurationTarget.Workspace);
-    assert.equal(configuration.get('document'), 'paper');
+    await wait(100);
+    assert.equal(vscode.workspace.getConfiguration('markora.theme').get('document'), 'paper');
     await vscode.commands.executeCommand('markora.resetDocumentTheme');
-    assert.equal(configuration.get('document'), 'classic-white');
+    await wait(100);
+    assert.equal(vscode.workspace.getConfiguration('markora.theme').get('document'), 'classic-white');
   });
 
   test('registers the visual editing commands used by the webview', async () => {

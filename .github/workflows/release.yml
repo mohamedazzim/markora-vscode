@@ -16,11 +16,11 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - run: npm run package:vsix
-      - run: sha256sum *.vsix > SHA256SUMS.txt
       - uses: softprops/action-gh-release@v2
         with:
           files: |
-            *.vsix
-            SHA256SUMS.txt
+            release/*.vsix
+            release/SHA256SUMS.txt
+            release/release-manifest.json
             THIRD_PARTY_NOTICES.md
           generate_release_notes: true

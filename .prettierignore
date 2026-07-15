@@ -1,0 +1,4 @@
+# Generated/project tooling content is not part of the extension source bundle.
+.codex/
+graphify-out/
+AGENTS.md

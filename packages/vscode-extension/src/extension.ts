@@ -66,7 +66,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   command('markora.resetDocumentTheme', () =>
     vscode.workspace
       .getConfiguration('markora.theme')
-      .update('document', 'classic-white', vscode.ConfigurationTarget.Global),
+      .update('document', undefined, vscode.ConfigurationTarget.Workspace),
   );
   command('markora.showDiagnostics', () =>
     vscode.commands.executeCommand('workbench.action.showRuntimeExtensions'),

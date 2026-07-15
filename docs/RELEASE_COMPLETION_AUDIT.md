@@ -17,15 +17,15 @@ The repository is a prerelease extension, not a published release. This audit re
 
 ## Implemented but not fully verified
 
-- Real custom editor launch harness with isolated user-data and extension directories. The installed VS Code instance could not launch during this run because its updater mutex reported `vscode-updating`; no E2E pass is claimed.
+- Real custom editor launch harness with isolated user-data, copied workspace, and extension directories. Portable VS Code 1.128.1 completed all 16 E2E tests.
 - Image insertion has workspace-relative routing, but clipboard paste, remote workspaces, conflict handling, and remote downloads need live VS Code coverage.
 - HTML export is available; full KaTeX SVG/CSS and Mermaid SVG export parity needs a dedicated export renderer.
 
 ## Blocked by external identity or machine state
 
-- GitHub owner and remote: `gh auth status` reports not logged in.
-- Marketplace publisher: package.json still contains the required placeholder and no publisher identity was invented.
-- Public GitHub repository, GitHub release, and Marketplace listing therefore remain uncreated.
+- GitHub owner: authenticated owner is `mohamedazzim`; repository creation and push are the next release step.
+- Marketplace publisher: `MohamedAzzimJ` is configured in `package.json`.
+- Public GitHub repository and GitHub release are pending the verified release steps below; Marketplace upload remains credential-gated.
 - Clean-profile installation and release upgrade testing require a successful VS Code launch and a real VSIX publisher field.
 
 ## Security and licensing
