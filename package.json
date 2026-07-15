@@ -335,7 +335,7 @@
     "@tiptap/starter-kit": "^3.27.4",
     "dompurify": "^3.2.6",
     "katex": "^0.16.22",
-    "marked": "^15.0.7",
+    "marked": "^18.0.6",
     "mermaid": "^11.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
