@@ -23,9 +23,9 @@ The repository is a prerelease extension, not a published release. This audit re
 
 ## Blocked by external identity or machine state
 
-- GitHub owner: authenticated owner is `mohamedazzim`; repository creation and push are the next release step.
+- GitHub owner: `mohamedazzim/markora-vscode` is public and `main` is pushed; CI and CodeQL pass on the release commit.
 - Marketplace publisher: `MohamedAzzimJ` is configured in `package.json`.
-- Public GitHub repository and GitHub release are pending the verified release steps below; Marketplace upload remains credential-gated.
+- GitHub release is pending the final `v0.1.0` tag; Marketplace upload remains credential-gated.
 - Clean-profile installation and release upgrade testing require a successful VS Code launch and a real VSIX publisher field.
 
 ## Security and licensing
