@@ -296,6 +296,7 @@
     "manifest:check": "node scripts/manifest-check.mjs",
     "watch": "node scripts/build.mjs --watch",
     "dev": "npm run watch",
+    "dev:clean": "npm run clean && npm run dev",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
