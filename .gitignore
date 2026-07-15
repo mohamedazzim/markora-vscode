@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.vsix
+coverage/
+test-results/
+.vscode-test/
+.env
+.env.*
+!.env.example

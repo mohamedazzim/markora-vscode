@@ -1,0 +1,224 @@
+:root {
+  color-scheme: light dark;
+  --doc-bg: var(--vscode-editor-background, #fff);
+  --doc-text: var(--vscode-editor-foreground, #25282b);
+  --doc-muted: var(--vscode-descriptionForeground, #687078);
+  --doc-border: var(--vscode-editorWidget-border, #dfe3e6);
+  --doc-accent: var(--vscode-textLink-foreground, #1f7a4d);
+  --doc-code: var(--vscode-textCodeBlock-background, #f5f7f8);
+  --doc-selection: var(--vscode-editor-selectionBackground, #d9eee2);
+  --doc-quote: var(--vscode-textPreformat-foreground, #6b747b);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--vscode-editor-background, #fff);
+  color: var(--vscode-editor-foreground, #25282b);
+  font-family: var(--vscode-font-family, system-ui, sans-serif);
+}
+.markora-webview {
+  min-height: 100vh;
+  background: var(--doc-bg);
+  color: var(--doc-text);
+}
+.context-bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px max(14px, calc((100% - var(--content-width, 956px)) / 2));
+  background: color-mix(in srgb, var(--doc-bg) 94%, var(--doc-text));
+  border-bottom: 1px solid var(--doc-border);
+}
+.wordmark {
+  margin-right: auto;
+  color: var(--doc-accent);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.context-bar button,
+.theme-select select {
+  min-height: 28px;
+  color: inherit;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.context-bar button:hover,
+.context-bar button:focus-visible {
+  background: color-mix(in srgb, var(--doc-accent) 14%, transparent);
+  border-color: var(--doc-accent);
+  outline: none;
+}
+.theme-select {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  color: var(--doc-muted);
+  font-size: 11px;
+}
+.theme-select select {
+  color: inherit;
+  border-color: var(--doc-border);
+}
+.document-surface {
+  min-height: calc(100vh - 46px);
+}
+.tiptap {
+  width: min(100%, var(--content-width, 956px));
+  min-height: calc(100vh - 46px);
+  margin: 0 auto;
+  padding: 58px 48px 180px;
+  outline: none;
+  font-size: var(--vscode-editor-font-size, 16px);
+  line-height: 1.7;
+}
+.tiptap > :first-child {
+  margin-top: 0;
+}
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  color: var(--doc-text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.tiptap h1 {
+  border-bottom: 1px solid var(--doc-border);
+  padding-bottom: 0.35em;
+}
+.tiptap p {
+  margin: 0 0 1em;
+  min-height: 1.4em;
+}
+.tiptap a {
+  color: var(--doc-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.tiptap blockquote {
+  margin: 1.2em 0;
+  padding-left: 1em;
+  color: var(--doc-muted);
+  border-left: 3px solid var(--doc-quote);
+}
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.5em;
+}
+.tiptap li {
+  margin: 0.2em 0;
+}
+.tiptap pre {
+  padding: 1em;
+  overflow: auto;
+  color: var(--doc-text);
+  background: var(--doc-code);
+  border: 1px solid var(--doc-border);
+  border-radius: 7px;
+}
+.tiptap code {
+  padding: 0.12em 0.35em;
+  color: var(--doc-text);
+  background: var(--doc-code);
+  border-radius: 4px;
+  font-family: var(--vscode-editor-font-family, monospace);
+}
+.tiptap pre code {
+  padding: 0;
+  background: transparent;
+}
+.tiptap table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4em 0;
+}
+.tiptap th,
+.tiptap td {
+  padding: 0.55em 0.7em;
+  text-align: left;
+  border: 1px solid var(--doc-border);
+}
+.tiptap th {
+  background: color-mix(in srgb, var(--doc-code) 75%, var(--doc-bg));
+}
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--doc-border);
+  border-radius: 6px;
+}
+.tiptap hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid var(--doc-border);
+}
+.tiptap mark {
+  padding: 0.08em 0.2em;
+  background: color-mix(in srgb, var(--doc-accent) 24%, transparent);
+}
+.tiptap ::selection {
+  background: var(--doc-selection);
+}
+.status-message {
+  padding: 8px 16px;
+  color: var(--vscode-errorForeground);
+  background: var(--vscode-inputValidation-errorBackground);
+}
+.slash-menu {
+  position: fixed;
+  z-index: 5;
+  top: 48px;
+  left: max(14px, calc((100% - var(--content-width, 956px)) / 2));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  gap: 2px;
+  padding: 8px;
+  background: var(--vscode-quickInput-background, var(--doc-bg));
+  border: 1px solid var(--doc-border);
+  border-radius: 7px;
+  box-shadow: var(--vscode-widget-shadow, 0 12px 32px rgb(0 0 0 / 24%));
+}
+.slash-menu button {
+  padding: 7px 9px;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.slash-menu button:hover,
+.slash-menu button:focus-visible {
+  color: var(--doc-accent);
+  background: color-mix(in srgb, var(--doc-accent) 14%, transparent);
+  outline: none;
+}
+@media (max-width: 700px) {
+  .context-bar {
+    flex-wrap: wrap;
+    padding-inline: 10px;
+  }
+  .wordmark {
+    width: 100%;
+  }
+  .tiptap {
+    padding: 32px 22px 130px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

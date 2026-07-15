@@ -1,0 +1,15 @@
+.github/**
+.vscode/**
+docs/**
+packages/**
+scripts/**
+test-workspace/**
+tests/**
+*.map
+*.ts
+*.tsx
+!dist/**
+!media/icon.png
+!README.md
+!LICENSE
+!CHANGELOG.md

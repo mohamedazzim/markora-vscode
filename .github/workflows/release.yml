@@ -1,0 +1,26 @@
+name: Release VSIX
+on:
+  push:
+    tags: ['v*.*.*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm run package:vsix
+      - run: sha256sum *.vsix > SHA256SUMS.txt
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            *.vsix
+            SHA256SUMS.txt
+            THIRD_PARTY_NOTICES.md
+          generate_release_notes: true

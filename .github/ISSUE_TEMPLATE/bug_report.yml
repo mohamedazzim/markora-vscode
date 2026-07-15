@@ -1,0 +1,17 @@
+name: Bug report
+description: Report a reproducible problem
+title: 'bug: '
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include exact steps and a minimal Markdown fixture.
+    validations:
+      required: true
+  - type: input
+    id: vscode
+    attributes:
+      label: VS Code version
+    validations:
+      required: true

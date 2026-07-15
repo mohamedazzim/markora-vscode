@@ -1,0 +1,368 @@
+{
+  "name": "markora-markdown-editor",
+  "displayName": "Markora – Visual Markdown Editor",
+  "description": "An open-source visual Markdown editor for Visual Studio Code.",
+  "version": "0.1.0",
+  "publisher": "<MARKETPLACE_PUBLISHER_ID>",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "markdown",
+    "visual markdown",
+    "wysiwyg",
+    "markdown editor",
+    "typora alternative",
+    "mermaid",
+    "katex",
+    "technical writing",
+    "documentation",
+    "notes"
+  ],
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<GITHUB_OWNER>/markora-vscode.git"
+  },
+  "homepage": "https://github.com/<GITHUB_OWNER>/markora-vscode",
+  "bugs": {
+    "url": "https://github.com/<GITHUB_OWNER>/markora-vscode/issues"
+  },
+  "galleryBanner": {
+    "color": "#1f252e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onCustomEditor:markora.markdownVisualEditor",
+    "onCommand:markora.openVisualEditor"
+  ],
+  "main": "dist/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "markora.markdownVisualEditor",
+        "displayName": "Markora Visual Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.md"
+          },
+          {
+            "filenamePattern": "*.markdown"
+          },
+          {
+            "filenamePattern": "*.mdown"
+          },
+          {
+            "filenamePattern": "*.mkd"
+          }
+        ],
+        "priority": "option"
+      }
+    ],
+    "commands": [
+      {
+        "command": "markora.openVisualEditor",
+        "title": "Markora: Open Visual Editor",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.openSourceEditor",
+        "title": "Markora: Open Source Editor",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.toggleEditorMode",
+        "title": "Markora: Toggle Visual/Source Editor",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.showEditorCommands",
+        "title": "Markora: Show Editor Commands",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.insertTable",
+        "title": "Markora: Insert Table",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.insertImage",
+        "title": "Markora: Insert Image",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.insertMath",
+        "title": "Markora: Insert Math",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.insertDiagram",
+        "title": "Markora: Insert Mermaid Diagram",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.exportHtml",
+        "title": "Markora: Export HTML",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.copyAsHtml",
+        "title": "Markora: Copy as HTML",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.copyAsMarkdown",
+        "title": "Markora: Copy as Markdown",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.showDocumentOutline",
+        "title": "Markora: Show Document Outline",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.openThemePicker",
+        "title": "Markora: Open Theme Picker",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.resetDocumentTheme",
+        "title": "Markora: Reset Document Theme",
+        "category": "Markora"
+      },
+      {
+        "command": "markora.showDiagnostics",
+        "title": "Markora: Show Diagnostics",
+        "category": "Markora"
+      }
+    ],
+    "configuration": {
+      "title": "Markora",
+      "properties": {
+        "markora.theme.document": {
+          "type": "string",
+          "enum": [
+            "follow-vscode",
+            "classic-white",
+            "paper",
+            "academic",
+            "sepia",
+            "graphite",
+            "midnight",
+            "high-contrast"
+          ],
+          "default": "follow-vscode",
+          "description": "Document theme used by the visual editor."
+        },
+        "markora.theme.followVsCode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Follow the active VS Code color theme when the document theme is adaptive."
+        },
+        "markora.theme.code": {
+          "type": "string",
+          "enum": [
+            "follow-vscode",
+            "github",
+            "monokai",
+            "atom-one-dark"
+          ],
+          "default": "follow-vscode"
+        },
+        "markora.theme.mermaid": {
+          "type": "string",
+          "enum": [
+            "follow-vscode",
+            "neutral",
+            "dark",
+            "forest"
+          ],
+          "default": "neutral"
+        },
+        "markora.editor.contentWidth": {
+          "type": "number",
+          "minimum": 480,
+          "maximum": 1400,
+          "default": 860
+        },
+        "markora.editor.fontFamily": {
+          "type": "string",
+          "default": "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        },
+        "markora.editor.fontSize": {
+          "type": "number",
+          "minimum": 10,
+          "maximum": 32,
+          "default": 16
+        },
+        "markora.editor.lineHeight": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3,
+          "default": 1.7
+        },
+        "markora.editor.showSelectionToolbar": {
+          "type": "boolean",
+          "default": true
+        },
+        "markora.editor.enableSlashCommands": {
+          "type": "boolean",
+          "default": true
+        },
+        "markora.images.destination": {
+          "type": "string",
+          "enum": [
+            "document-sibling",
+            "assets",
+            "workspace-assets"
+          ],
+          "default": "assets"
+        },
+        "markora.images.assetFolder": {
+          "type": "string",
+          "default": "assets",
+          "description": "Workspace-relative image folder."
+        },
+        "markora.images.useRelativePaths": {
+          "type": "boolean",
+          "default": true
+        },
+        "markora.images.allowRemote": {
+          "type": "boolean",
+          "default": false
+        },
+        "markora.images.downloadRemoteOnInsert": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "markora.showEditorCommands"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "markora.openVisualEditor",
+          "group": "navigation@1",
+          "when": "resourceExtname == .md"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "markora.openVisualEditor",
+          "group": "navigation",
+          "when": "resourceExtname == .md"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "markora.toggleEditorMode",
+        "key": "ctrl+alt+m",
+        "when": "resourceExtname == .md"
+      },
+      {
+        "command": "markora.showEditorCommands",
+        "key": "ctrl+shift+alt+m",
+        "when": "editorTextFocus"
+      }
+    ],
+    "walkthrough": [
+      {
+        "id": "markora.getStarted",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a Markdown file visually",
+            "description": "Right-click a Markdown file and choose Reopen Editor With… → Markora Visual Editor."
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "compile": "npm run build",
+    "build": "node scripts/build.mjs",
+    "manifest:check": "node scripts/manifest-check.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "dev": "npm run watch",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run packages/markdown-core/tests packages/vscode-extension/tests --exclude packages/vscode-extension/tests/e2e/**",
+    "test:integration": "vitest run packages/vscode-extension/tests/integration",
+    "test:webview": "vitest run packages/editor-webview/tests",
+    "test:accessibility": "vitest run packages/editor-webview/tests/accessibility",
+    "test:e2e": "node scripts/vscode-e2e.mjs",
+    "test:performance": "vitest run packages/markdown-core/tests/performance",
+    "package": "npm run build && vsce package --no-dependencies",
+    "package:vsix": "npm run package",
+    "verify": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build && npm run manifest:check",
+    "publish:check": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/publish-check.ps1"
+  },
+  "dependencies": {
+    "@tiptap/core": "^3.27.4",
+    "@tiptap/extension-highlight": "^3.27.4",
+    "@tiptap/extension-image": "^3.27.4",
+    "@tiptap/extension-link": "^3.27.4",
+    "@tiptap/extension-table": "^3.27.4",
+    "@tiptap/extension-table-cell": "^3.27.4",
+    "@tiptap/extension-table-header": "^3.27.4",
+    "@tiptap/extension-table-row": "^3.27.4",
+    "@tiptap/extension-task-item": "^3.27.4",
+    "@tiptap/extension-task-list": "^3.27.4",
+    "@tiptap/extension-underline": "^3.27.4",
+    "@tiptap/react": "^3.27.4",
+    "@tiptap/starter-kit": "^3.27.4",
+    "dompurify": "^3.2.6",
+    "katex": "^0.16.22",
+    "marked": "^15.0.7",
+    "mermaid": "^11.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "sanitize-html": "^2.17.6",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2",
+    "unified": "^11.0.5",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@types/sanitize-html": "^2.16.1",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^8.24.0",
+    "@typescript-eslint/parser": "^8.24.0",
+    "@vscode/vsce": "^3.6.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "jsdom": "^26.0.0",
+    "prettier": "^3.5.1",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5",
+    "@vitejs/plugin-react": "^4.3.4"
+  }
+}
