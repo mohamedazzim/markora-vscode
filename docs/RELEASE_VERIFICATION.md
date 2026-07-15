@@ -5,8 +5,9 @@
 - VS Code detected: 1.128.0 (installed executable); Node.js 24.16.0; npm 11.13.0.
 - `npm ci`, typecheck, lint, format check, build, manifest check, unit/integration/webview/accessibility/
   performance suites, and `npm audit --omit=dev --audit-level=high` passed.
-- The real `@vscode/test-electron` harness downloaded VS Code 1.128.1 but launch was blocked by the local
-  VS Code update mutex (`Code is currently being updated`). The E2E result is therefore **untested**, not passed.
+- The real `@vscode/test-cli` harness first attempted to download stable 1.128.1, but the download ended with
+  `ECONNRESET`. It then used the installed VS Code 1.128.0 executable; launch was blocked by the local update
+  mutex (`Code is currently being updated`). The E2E result is therefore **blocked**, not passed.
 - VSIX listing/package was blocked before file creation because `package.json.publisher` and repository owner are
   intentionally placeholders. No installation, clean-profile, uninstall, or checksum claim is made.
 

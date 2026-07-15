@@ -15,6 +15,7 @@ import TaskItem from '@tiptap/extension-task-item';
 import { markdownToHtml, structuredHtmlToMarkdown } from '../../markdown-core/src/index.js';
 import type { ExtensionToWebviewMessage } from '../../markdown-core/src/messages.js';
 import { documentThemes, type DocumentTheme } from '../../markdown-core/src/themes.js';
+import { MathBlock, MathInline, MermaidBlock } from './visual-nodes.js';
 
 declare function acquireVsCodeApi(): {
   postMessage(message: unknown): void;
@@ -34,6 +35,9 @@ const extensions = [
   TableCell,
   TaskList,
   TaskItem.configure({ nested: true }),
+  MathInline,
+  MathBlock,
+  MermaidBlock,
 ];
 
 function App(): React.JSX.Element {
@@ -90,13 +94,19 @@ function App(): React.JSX.Element {
         if (incoming.command === 'insertTable')
           editor?.chain().focus().insertTable({ rows: 2, cols: 2, withHeaderRow: true }).run();
         else if (incoming.command === 'insertMath')
-          editor?.chain().focus().toggleCodeBlock().insertContent('$$\n\\text{equation}\n$$').run();
+          editor
+            ?.chain()
+            .focus()
+            .insertContent({ type: 'mathBlock', attrs: { source: '\\text{equation}' } })
+            .run();
         else if (incoming.command === 'insertDiagram')
           editor
             ?.chain()
             .focus()
-            .toggleCodeBlock()
-            .insertContent('```mermaid\nflowchart TD\n  A[Start] --> B[End]\n```')
+            .insertContent({
+              type: 'mermaidBlock',
+              attrs: { source: 'flowchart TD\n  A[Start] --> B[End]' },
+            })
             .run();
         else if (
           incoming.command === 'insertImage' &&

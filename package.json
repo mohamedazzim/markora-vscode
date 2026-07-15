@@ -306,7 +306,12 @@
     "test:integration": "vitest run packages/vscode-extension/tests/integration",
     "test:webview": "vitest run packages/editor-webview/tests",
     "test:accessibility": "vitest run packages/editor-webview/tests/accessibility",
-    "test:e2e": "node scripts/vscode-e2e.mjs",
+    "test:vscode": "vscode-test",
+    "test:vscode:stable": "node scripts/run-vscode-tests.mjs stable",
+    "test:vscode:insiders": "node scripts/run-vscode-tests.mjs insiders",
+    "test:e2e": "npm run build && npm run test:vscode",
+    "test:e2e:clean": "npm run clean && npm run test:e2e",
+    "test:e2e:debug": "npm run build && vscode-test --grep Markora",
     "test:performance": "vitest run packages/markdown-core/tests/performance",
     "package": "npm run build && vsce package --no-dependencies",
     "package:vsix": "npm run package",
@@ -345,6 +350,9 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/jsdom": "^28.0.3",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.13.4",
     "@types/react": "^19.0.8",
@@ -353,17 +361,17 @@
     "@types/vscode": "^1.90.0",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "@typescript-eslint/parser": "^8.24.0",
-    "@vscode/vsce": "^3.6.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^2.5.2",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
+    "@vscode/vsce": "^3.6.0",
+    "axe-core": "^4.12.1",
     "esbuild": "^0.25.0",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "jsdom": "^26.0.0",
     "prettier": "^3.5.1",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.5",
-    "@vitejs/plugin-react": "^4.3.4"
+    "vitest": "^3.0.5"
   }
 }

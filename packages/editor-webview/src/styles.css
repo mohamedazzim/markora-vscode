@@ -217,6 +217,77 @@ body {
 .tiptap ::selection {
   background: var(--doc-selection);
 }
+.markora-math-inline-node,
+.markora-math-block-node,
+.markora-mermaid-node {
+  position: relative;
+  display: block;
+  margin: 1.35em 0;
+  padding: 14px 16px;
+  color: var(--doc-text);
+  background: color-mix(in srgb, var(--doc-surface) 92%, var(--doc-accent));
+  border: 1px solid var(--doc-border);
+  border-radius: 8px;
+}
+.markora-math-inline-node {
+  display: inline-flex;
+  margin: 0 0.15em;
+  padding: 2px 5px;
+  vertical-align: middle;
+}
+.markora-visual-content {
+  min-height: 1.5em;
+  overflow-x: auto;
+}
+.markora-math-block-node .markora-visual-content {
+  text-align: center;
+}
+.markora-mermaid-node .markora-visual-content svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.markora-visual-source {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+.markora-visual-edit {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 3px 7px;
+  color: var(--doc-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+}
+.markora-math-inline-node:hover .markora-visual-edit,
+.markora-math-block-node:hover .markora-visual-edit,
+.markora-mermaid-node:hover .markora-visual-edit,
+.markora-visual-edit:focus-visible {
+  opacity: 1;
+}
+.markora-visual-edit:hover,
+.markora-visual-edit:focus-visible {
+  color: var(--doc-accent);
+  border-color: var(--doc-accent);
+  outline: none;
+}
+.markora-math-inline-node.is-error,
+.markora-math-block-node.is-error,
+.markora-mermaid-node.is-error {
+  color: var(--vscode-errorForeground, #b42318);
+  border-color: var(--vscode-errorForeground, #b42318);
+}
+.ProseMirror-selectednode {
+  outline: 2px solid var(--doc-accent);
+  outline-offset: 2px;
+}
 .status-message {
   padding: 8px 16px;
   color: var(--vscode-errorForeground);

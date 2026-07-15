@@ -40,4 +40,18 @@ describe('public Markdown core', () => {
     expect(markdown).toContain('![Alt](assets/photo.png)');
     expect(markdown).toContain('```ts');
   });
+
+  it('creates editable visual nodes for math and Mermaid and restores their sources', () => {
+    const source =
+      'Inline $x^2$ and \\(y+1\\).\n\n$$\n\\int_0^1 x dx\n$$\n\n```mermaid\nflowchart TD\n  A --> B\n```\n';
+    const html = markdownToHtml(source);
+    expect(html).toContain('data-markora-math-inline="true"');
+    expect(html).toContain('data-markora-math-block="true"');
+    expect(html).toContain('data-markora-mermaid-block="true"');
+    const markdown = structuredHtmlToMarkdown(html);
+    expect(markdown).toContain('$x^2$');
+    expect(markdown).toContain('\\int_0^1 x dx');
+    expect(markdown).toContain('```mermaid');
+    expect(markdown).toContain('A --> B');
+  });
 });

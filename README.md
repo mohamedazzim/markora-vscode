@@ -61,7 +61,8 @@ The desktop Electron application is private and is not a dependency of this repo
 ## Limitations
 
 PDF export is intentionally not included in the first VS Code release. Large documents can be opened in the
-native Source Editor. Full real-UI VS Code E2E requires a machine with VS Code and is opt-in.
+native Source Editor. Real VS Code E2E uses an isolated Extension Development Host and requires a local VS Code
+installation that is not in the middle of an update.
 
 ## License
 

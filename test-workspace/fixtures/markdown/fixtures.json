@@ -1,0 +1,110 @@
+[
+  { "id": "empty", "source": "", "contains": [] },
+  { "id": "paragraph", "source": "A paragraph with plain text.", "contains": ["A paragraph"] },
+  { "id": "heading-1", "source": "# Heading one", "contains": ["# Heading one"] },
+  { "id": "heading-2", "source": "## Heading two", "contains": ["## Heading two"] },
+  { "id": "heading-3", "source": "### Heading three", "contains": ["### Heading three"] },
+  { "id": "heading-4", "source": "#### Heading four", "contains": ["#### Heading four"] },
+  { "id": "heading-5", "source": "##### Heading five", "contains": ["##### Heading five"] },
+  { "id": "heading-6", "source": "###### Heading six", "contains": ["###### Heading six"] },
+  { "id": "emphasis", "source": "**bold** and *italic* and ***both***", "contains": ["bold", "italic"] },
+  { "id": "underline-html", "source": "<u>underlined</u>", "contains": ["underlined"] },
+  { "id": "strike-highlight", "source": "~~removed~~ and ==marked==", "contains": ["removed"] },
+  { "id": "inline-code", "source": "Use `npm test` here.", "contains": ["npm test"] },
+  {
+    "id": "escaped-markdown",
+    "source": "\\*literal asterisk\\* and \\[brackets\\]",
+    "contains": ["literal asterisk"]
+  },
+  { "id": "unordered-list", "source": "- one\n- two\n- three", "contains": ["one", "three"] },
+  { "id": "ordered-list", "source": "1. first\n2. second", "contains": ["first", "second"] },
+  {
+    "id": "nested-list",
+    "source": "- parent\n  - child\n    - grandchild",
+    "contains": ["parent", "grandchild"]
+  },
+  { "id": "task-list", "source": "- [ ] todo\n- [x] done", "contains": ["todo", "done"] },
+  { "id": "blockquote", "source": "> quoted text\n> continued", "contains": ["quoted text"] },
+  { "id": "horizontal-rule", "source": "Before\n\n---\n\nAfter", "contains": ["Before", "After"] },
+  { "id": "fenced-code", "source": "```ts\nconst value = '$not-math$';\n```", "contains": ["$not-math$"] },
+  { "id": "fence-with-backticks", "source": "````text\n``` still text\n````", "contains": ["still text"] },
+  { "id": "table", "source": "| Name | Value |\n| --- | --- |\n| A | B |", "contains": ["Name", "Value"] },
+  {
+    "id": "table-escaped-pipe",
+    "source": "| Expression | Result |\n| --- | --- |\n| a\\|b | c |",
+    "contains": ["a|b"]
+  },
+  {
+    "id": "table-alignment",
+    "source": "| L | C | R |\n| :--- | :---: | ---: |\n| 1 | 2 | 3 |",
+    "contains": ["1", "2", "3"]
+  },
+  {
+    "id": "inline-link",
+    "source": "[Markora](https://example.com)",
+    "contains": ["Markora", "https://example.com"]
+  },
+  {
+    "id": "reference-link",
+    "source": "[docs][ref]\n\n[ref]: https://example.com/docs",
+    "contains": ["docs", "https://example.com/docs"]
+  },
+  {
+    "id": "image",
+    "source": "![Alt text](images/photo.png \"Title\")",
+    "contains": ["Alt text", "images/photo.png"]
+  },
+  { "id": "image-with-space", "source": "![Alt](<images/my photo.png>)", "contains": ["my%20photo.png"] },
+  {
+    "id": "front-matter",
+    "source": "---\ntitle: Fixture\ntags: [a, b]\n---\n\nBody",
+    "contains": ["title: Fixture", "Body"]
+  },
+  { "id": "math-inline", "source": "Euler: $e^{i\\pi}+1=0$", "contains": ["e^{i\\pi}+1=0"] },
+  { "id": "math-display", "source": "$$\n\\frac{1}{2}\n$$", "contains": ["\\frac{1}{2}"] },
+  { "id": "math-bracket", "source": "\\[x^2 + y^2\\]", "contains": ["x^2 + y^2"] },
+  { "id": "math-fence", "source": "```math\n\\sum_{i=1}^n i\n```", "contains": ["\\sum_{i=1}^n i"] },
+  {
+    "id": "mermaid-flow",
+    "source": "```mermaid\nflowchart TD\n  A --> B\n```",
+    "contains": ["flowchart TD", "A --> B"]
+  },
+  {
+    "id": "mermaid-sequence",
+    "source": "```mermaid\nsequenceDiagram\n  Alice->>Bob: Hello\n```",
+    "contains": ["sequenceDiagram", "Alice"]
+  },
+  {
+    "id": "safe-html",
+    "source": "<details><summary>More</summary>Details</details>",
+    "contains": ["More", "Details"]
+  },
+  { "id": "unsafe-html", "source": "<script>alert('x')</script>\nSafe", "contains": ["Safe"] },
+  { "id": "github-alert", "source": "> [!NOTE]\n> A useful note.", "contains": ["A useful note"] },
+  { "id": "unicode", "source": "नमस्ते — café — 中文", "contains": ["नमस्ते", "中文"] },
+  { "id": "emoji", "source": "Ship it :rocket: 🚀", "contains": ["Ship it"] },
+  { "id": "crlf", "source": "# CRLF\r\n\r\nLine one\r\nLine two\r\n", "contains": ["CRLF", "Line two"] },
+  {
+    "id": "long-line",
+    "source": "Long: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "contains": ["Long:"]
+  },
+  {
+    "id": "html-image",
+    "source": "<img src=\"assets/photo.png\" alt=\"Photo\">",
+    "contains": ["photo.png", "Photo"]
+  },
+  { "id": "raw-inline-html", "source": "A <span data-id=\"safe\">span</span>.", "contains": ["span"] },
+  {
+    "id": "unknown-fence",
+    "source": "```custom-language\nopaque content\n```",
+    "contains": ["opaque content"]
+  },
+  { "id": "comments", "source": "<!-- editor note -->\nVisible text", "contains": ["Visible text"] },
+  {
+    "id": "mixed-document",
+    "source": "# Mixed\n\n- **bold**\n- [x] task\n\n| A | B |\n| --- | --- |\n| $x$ | ![alt](a.png) |",
+    "contains": ["Mixed", "task", "a.png"]
+  },
+  { "id": "empty-lines", "source": "\n\n\nText\n\n", "contains": ["Text"] }
+]
