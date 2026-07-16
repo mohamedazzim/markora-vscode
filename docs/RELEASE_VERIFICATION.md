@@ -18,6 +18,16 @@
 - `media/screenshots/markora-webview.png` is a public-safe repository screenshot. Marketplace screenshot gallery
   metadata remains unchanged until an authenticated publication.
 
+## CodeQL security fix candidate (2026-07-16)
+
+- GitHub alerts #1 (`js/incomplete-sanitization`) and #2 (`js/incomplete-multi-character-sanitization`) were
+  retrieved from the public API and reproduced against the shared Markdown core.
+- The fixes use parser-aware heading sanitization, global Markdown image-alt escaping, tag-specific URL schemes,
+  and rejection of non-image data URLs. Five focused security tests were added.
+- This branch is a pull-request candidate. A patch release is required after merge because the affected core ships
+  in the extension. Marketplace publication is not claimed until publisher authentication and clean-profile checks
+  are complete.
+
 ## Current run (2026-07-16, Windows x64)
 
 - VS Code detected: 1.128.0 (installed executable); Node.js 24.16.0; npm 11.13.0.

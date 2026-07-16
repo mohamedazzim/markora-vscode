@@ -314,6 +314,7 @@
     "test:e2e:clean": "npm run clean && npm run test:e2e",
     "test:e2e:debug": "npm run build && vscode-test --grep Markora",
     "test:performance": "vitest run packages/markdown-core/tests/performance",
+    "test:security": "vitest run packages/markdown-core/tests/security-sanitization.test.ts",
     "package": "npm run build && node scripts/package.mjs",
     "package:vsix": "npm run package",
     "verify": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build && npm run manifest:check",
