@@ -35,10 +35,13 @@ Install the current published extension directly from the Marketplace:
 code --install-extension MohamedAzzimJ.markora-markdown-editor
 ```
 
-Or install the verified public `0.1.1` VSIX:
+Or download and install the verified public `0.1.1` VSIX:
 
 ```powershell
-code --install-extension https://github.com/mohamedazzim/markora-vscode/releases/download/v0.1.1/markora-markdown-editor-0.1.1.vsix
+Invoke-WebRequest `
+  -Uri "https://github.com/mohamedazzim/markora-vscode/releases/download/v0.1.1/markora-markdown-editor-0.1.1.vsix" `
+  -OutFile ".\markora-markdown-editor-0.1.1.vsix"
+code --install-extension .\markora-markdown-editor-0.1.1.vsix
 ```
 
 The matching [SHA-256SUMS.txt](https://github.com/mohamedazzim/markora-vscode/releases/download/v0.1.1/SHA256SUMS.txt)
