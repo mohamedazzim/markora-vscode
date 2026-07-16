@@ -1,12 +1,12 @@
 # Publishing
 
 Run `npm run publish:check`, `npx @vscode/vsce ls`, and `npm run package:vsix`. The manifest uses the permanent
-Marketplace publisher ID `MohamedAzzimJ`. Version `0.1.1` remains the current public listing and is publicly available at
+Marketplace publisher ID `MohamedAzzimJ`. Version `0.1.2` is the current public listing and is publicly available at
 [the Marketplace listing](https://marketplace.visualstudio.com/items?itemName=MohamedAzzimJ.markora-markdown-editor).
 The public Gallery API independently verified the publisher, version, categories, tags, repository, issues URL,
 license, changelog, icon and README/details assets. The repository `main` branch contains the merged `0.1.3`
-security patch and its public GitHub release; it is not Marketplace-published and no publication is claimed until
-the publisher-owned credential is refreshed.
+security patch and its public GitHub release; that security release is not Marketplace-published and no publication
+of 0.1.3 is claimed.
 
 The Marketplace installation command is:
 

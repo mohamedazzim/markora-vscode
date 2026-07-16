@@ -13,7 +13,7 @@ source control, hot exit, diffing, remote workspaces, and file watching.
 
 ![Markora for VS Code webview](media/screenshots/markora-webview.png)
 
-The public Marketplace listing remains **0.1.1**. The current GitHub security patch release is **0.1.3**;
+The public Marketplace listing is **0.1.2**. The current GitHub security patch release is **0.1.3**;
 Marketplace publication of 0.1.3 is pending publisher authentication and is not claimed here.
 
 ## Features
@@ -91,7 +91,7 @@ The desktop Electron application is a separate repository and is not a dependenc
 ## Marketplace presentation
 
 The Marketplace listing currently exposes the original Markora icon, README, MIT license, changelog,
-repository and issue links at version 0.1.1. This GitHub README intentionally has no embedded logo image;
+repository and issue links at version 0.1.2. This GitHub README intentionally has no embedded logo image;
 the icon continues to be provided by extension manifest metadata. The repository screenshot is public-safe,
 but no Marketplace screenshot gallery is claimed until a future authenticated publication updates its gallery.
 

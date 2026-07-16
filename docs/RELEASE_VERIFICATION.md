@@ -25,7 +25,7 @@
 
 ## Documentation follow-up (2026-07-16)
 
-- The public Marketplace listing remains `0.1.1`; no new release or tag was created for documentation changes.
+- The public Marketplace listing is `0.1.2`; no new release or tag was created for documentation changes.
 - Repository `main` contains the merged `0.1.3` security patch and its verification artifacts, but Marketplace
   publication is not claimed because the cached publisher credential returned `TF400813`.
 - `media/screenshots/markora-webview.png` is a public-safe repository screenshot. Marketplace screenshot gallery
@@ -72,9 +72,9 @@
   completed successfully and reported the extension was already installed.
 - Installed-version check returned:
   `mohamedazzimj.markora-markdown-editor@0.1.0`.
-- `npx @vscode/vsce show MohamedAzzimJ.markora-markdown-editor` reports `0 installs` for this newly published listing;
-  the README also carries the official Marketplace installs badge, which resolves dynamically.
-- The `0.1.1` listing currently contains the original icon as its only published image. A public-safe screenshot
+- `npx @vscode/vsce show MohamedAzzimJ.markora-markdown-editor` reported 24 downloads during this audit; the README
+  also carries the official Marketplace installs badge, which resolves dynamically.
+- The `0.1.2` listing currently contains the original icon as its only published image. A public-safe screenshot
   now exists in the repository, but Marketplace screenshot-gallery metadata is intentionally unchanged until an
   authenticated publication; private desktop screenshots are not published.
 
