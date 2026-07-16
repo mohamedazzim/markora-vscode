@@ -6,7 +6,7 @@
 - `npm ci`, `npm run verify`, real VS Code E2E (16 passing), `npm run publish:check`, and
   `npm audit --omit=dev --audit-level=high` passed.
 - VSIX: `release\markora-markdown-editor-0.1.1.vsix`, 15 files, SHA-256
-  `a56066b99e0d7cbed9a4f17f197e1b356299fe7d6b26b466fa01eeab22dcb307`.
+  `47ec1ee89a9ce1150f5f7dfd9a3999c21e988d63ca04db9e5114493876ac7e87`.
 - Publication attempt was rejected by the cached `vsce` credential with `TF400813`; no Marketplace publication is claimed.
 - The prior `0.1.0` VSIX and public listing were not modified.
 
