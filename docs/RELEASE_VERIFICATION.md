@@ -1,5 +1,15 @@
 # Release verification
 
+## Patch candidate 0.1.1 (2026-07-16)
+
+- Version and lockfile were updated to `0.1.1`; publisher remains `MohamedAzzimJ`.
+- `npm ci`, `npm run verify`, real VS Code E2E (16 passing), `npm run publish:check`, and
+  `npm audit --omit=dev --audit-level=high` passed.
+- VSIX: `release\markora-markdown-editor-0.1.1.vsix`, 15 files, SHA-256
+  `4631f44d6960d318f804fc0d69bc534f4f8494b461135bc2046ae943e7ea567a`.
+- Publication attempt was rejected by the cached `vsce` credential with `TF400813`; no Marketplace publication is claimed.
+- The prior `0.1.0` VSIX and public listing were not modified.
+
 ## Current run (2026-07-16, Windows x64)
 
 - VS Code detected: 1.128.0 (installed executable); Node.js 24.16.0; npm 11.13.0.

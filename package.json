@@ -2,7 +2,7 @@
   "name": "markora-markdown-editor",
   "displayName": "Markora – Visual Markdown Editor",
   "description": "An open-source visual Markdown editor for Visual Studio Code.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "MohamedAzzimJ",
   "license": "MIT",
   "engines": {
