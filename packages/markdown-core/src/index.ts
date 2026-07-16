@@ -142,7 +142,7 @@ function escapeText(value: string): string {
 /** Convert supported math/Mermaid source into lossless, editable HTML nodes. */
 function protectVisualBlocks(source: string): string {
   let result = source.replace(
-    /^ {0,3}```(math|mermaid)\s*\r?\n([\s\S]*?)\r?\n {0,3}```\s*$/gim,
+    /^ {0,3}(?:```|~~~)\s*(math|mermaid)\s*\r?\n([\s\S]*?)\r?\n {0,3}(?:```|~~~)\s*$/gim,
     (_all, language: string, body: string) => {
       const encoded = escapeAttribute(body.replace(/\r\n/g, '\n').replace(/\n$/, ''));
       return `<div data-markora-${language.toLowerCase()}-block="true" data-source="${encoded}">${escapeText(

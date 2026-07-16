@@ -25,6 +25,7 @@ export const webviewToExtensionSchema = z.discriminatedUnion('type', [
     requestId: z.string().min(1).max(100).optional(),
   }),
   z.object({ type: z.literal('mode.set'), mode: z.enum(['visual', 'source']) }),
+  z.object({ type: z.literal('link.open'), href: z.string().min(1).max(8_192) }),
 ]);
 export type WebviewToExtensionMessage = z.infer<typeof webviewToExtensionSchema>;
 export type ExtensionToWebviewMessage =

@@ -11,6 +11,7 @@ describe('editor webview contract', () => {
     expect(source).toContain('Insert table');
     expect(source).toContain("useState<DocumentTheme>('classic-white')");
     expect(source).toContain('theme-${theme}');
+    expect(source).toContain("type: 'link.open'");
     const visualNodes = await readFile(
       path.join(process.cwd(), 'packages/editor-webview/src/visual-nodes.ts'),
       'utf8',
@@ -19,5 +20,6 @@ describe('editor webview contract', () => {
     expect(visualNodes).toContain('MathBlock');
     expect(visualNodes).toContain('MermaidBlock');
     expect(visualNodes).toContain("securityLevel: 'strict'");
+    expect(visualNodes).toContain('priority: 1_000');
   });
 });

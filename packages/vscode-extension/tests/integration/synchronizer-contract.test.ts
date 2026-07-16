@@ -23,4 +23,16 @@ describe('extension-host synchronization contract', () => {
     expect(source).toContain('transactionId');
     expect(source).toContain('this.lastSentVersion = -1');
   });
+
+  it('routes webview links through VS Code document and external-link APIs', async () => {
+    const source = await readFile(
+      path.join(process.cwd(), 'packages/vscode-extension/src/WebviewManager.ts'),
+      'utf8',
+    );
+    expect(source).toContain("parsed.data.type === 'link.open'");
+    expect(source).toContain('vscode.env.openExternal');
+    expect(source).toContain('vscode.commands.executeCommand(');
+    expect(source).toContain("'vscode.openWith'");
+    expect(source).toContain('targetUri.path');
+  });
 });

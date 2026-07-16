@@ -117,7 +117,11 @@ function visualNode(
     draggable: false,
     addAttributes: () => ({ source: { default: '' } }),
     parseHTML: () => [
-      { tag: parseTag, getAttrs: (element) => ({ source: element.getAttribute('data-source') ?? '' }) },
+      {
+        tag: parseTag,
+        priority: 1_000,
+        getAttrs: (element) => ({ source: element.getAttribute('data-source') ?? '' }),
+      },
     ],
     renderHTML: ({ HTMLAttributes }) => [
       renderTag,

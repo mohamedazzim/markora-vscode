@@ -5,6 +5,7 @@ import {
   type AllowedCommand,
   type ExtensionToWebviewMessage,
 } from '../../markdown-core/src/messages.js';
+import { headingAnchors } from '../../markdown-core/src/index.js';
 import { DocumentSynchronizer } from './DocumentSynchronizer.js';
 import { buildWebviewHtml } from './security.js';
 
@@ -88,6 +89,10 @@ export class WebviewManager implements vscode.Disposable {
       } else this.send({ type: 'command.run', command: parsed.data.command, payload: parsed.data.payload });
       return;
     }
+    if (parsed.data.type === 'link.open') {
+      await this.openLink(parsed.data.href);
+      return;
+    }
     await this.synchronizer.handle(parsed.data);
     if (parsed.data.type === 'ready') this.sendCurrentTheme();
   }
@@ -95,6 +100,48 @@ export class WebviewManager implements vscode.Disposable {
   private sendCurrentTheme(): void {
     const theme = vscode.workspace.getConfiguration('markora.theme').get<string>('document', 'classic-white');
     this.send({ type: 'theme.set', theme, vscodeTheme: this.currentVsCodeTheme() });
+  }
+
+  private async openLink(href: string): Promise<void> {
+    const target = href.trim();
+    if (/^(?:https?:|mailto:)/iu.test(target)) {
+      await vscode.env.openExternal(vscode.Uri.parse(target));
+      return;
+    }
+    if (target.startsWith('#')) {
+      const anchor = headingAnchors(this.document.getText()).find((item) => item.id === target.slice(1));
+      if (anchor) {
+        const editor = await vscode.window.showTextDocument(this.document, this.panel.viewColumn);
+        const position = new vscode.Position(Math.max(0, anchor.line - 1), 0);
+        editor.selection = new vscode.Selection(position, position);
+        editor.revealRange(new vscode.Range(position, position));
+      } else {
+        void vscode.window.showWarningMessage(`Heading anchor ${target} was not found.`);
+      }
+      return;
+    }
+    const [pathPart] = target.split('#', 1);
+    const segments = pathPart
+      .replace(/^file:\/\//iu, '')
+      .split(/[\\/]+/u)
+      .filter((segment) => segment && segment !== '.');
+    const targetUri = vscode.Uri.joinPath(this.document.uri, '..', ...segments);
+    if (!/\.(?:md|markdown)$/iu.test(targetUri.path)) {
+      void vscode.window.showWarningMessage('Markora can open links to Markdown documents only.');
+      return;
+    }
+    try {
+      await vscode.commands.executeCommand(
+        'vscode.openWith',
+        targetUri,
+        'markora.markdownVisualEditor',
+        this.panel.viewColumn,
+      );
+    } catch (error) {
+      void vscode.window.showErrorMessage(
+        `Could not open linked Markdown document: ${error instanceof Error ? error.message : 'unknown error'}`,
+      );
+    }
   }
 
   private currentVsCodeTheme(): 'light' | 'dark' | 'high-contrast' {

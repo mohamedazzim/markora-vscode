@@ -63,6 +63,14 @@ function App(): React.JSX.Element {
         if (event.key === 'Escape') setSlashOpen(false);
         return false;
       },
+      handleClick: (_view, _pos, event) => {
+        const target = event.target instanceof HTMLElement ? event.target.closest('a[href]') : null;
+        const href = target?.getAttribute('href');
+        if (!href) return false;
+        event.preventDefault();
+        vscode.postMessage({ type: 'link.open', href });
+        return true;
+      },
     },
     onUpdate: ({ editor: instance }) => {
       if (applying.current) return;

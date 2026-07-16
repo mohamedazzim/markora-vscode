@@ -1,5 +1,9 @@
 # Known limitations
 
+## Source fixes pending the next published version
+
+- Mermaid fence recognition and relative Markdown-link opening are fixed in the current source tree and build, but are not part of the already-published `0.1.0` Marketplace artifact. They will ship in the next versioned release.
+
 - PDF export is not bundled; use VS Code or desktop Markora export when PDF is required.
 - Full lossless source formatting is preserved until a visual edit, after which supported constructs may normalize.
 - Real VS Code Extension Development Host E2E is opt-in and requires VS Code test infrastructure.

@@ -54,4 +54,10 @@ describe('public Markdown core', () => {
     expect(markdown).toContain('```mermaid');
     expect(markdown).toContain('A --> B');
   });
+
+  it('recognizes tilde Mermaid fences used by existing Markdown documents', () => {
+    const html = markdownToHtml('~~~mermaid\nflowchart LR\n  A --> B\n~~~\n');
+    expect(html).toContain('data-markora-mermaid-block="true"');
+    expect(structuredHtmlToMarkdown(html)).toContain('```mermaid');
+  });
 });
