@@ -5,6 +5,10 @@
 - Fixed Mermaid visual-node recognition for indented and tilde-fenced `mermaid` blocks so existing diagrams render instead of falling back to generic code blocks.
 - Added secure relative Markdown-link routing from the webview to VS Code's native document APIs, including heading-anchor navigation and clear warnings for unsupported targets.
 
+## 0.1.2 - 2026-07-16
+
+- Refreshed the Marketplace README without an embedded logo image. The extension icon remains available through the Marketplace manifest metadata.
+
 ## 0.1.1 - 2026-07-16
 
 - Fixed Mermaid visual-node recognition for indented and tilde-fenced `mermaid` blocks.
