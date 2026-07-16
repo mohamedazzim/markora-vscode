@@ -40,9 +40,8 @@ export function headingAnchors(source: string): HeadingAnchor[] {
   const anchors: HeadingAnchor[] = [];
   const append = (depth: number, text: string, line: number) => {
     const base =
-      text
+      sanitizeHtml(text, { allowedTags: [], allowedAttributes: {} })
         .toLocaleLowerCase()
-        .replace(/<[^>]*>/g, '')
         .replace(/[`*_~]/g, '')
         .replace(/[^\p{L}\p{N}\s-]/gu, '')
         .trim()
@@ -112,6 +111,18 @@ export function sanitizeMarkdownHtml(html: string): string {
     allowedTags,
     allowedAttributes,
     allowedSchemes: ['http', 'https', 'mailto', 'data'],
+    allowedSchemesByTag: {
+      a: ['http', 'https', 'mailto'],
+      img: ['http', 'https', 'data'],
+    },
+    exclusiveFilter: (frame) => {
+      if (frame.tag.toLowerCase() !== 'img') return false;
+      const source = frame.attribs.src?.trim() ?? '';
+      return (
+        source.startsWith('data:') &&
+        !/^data:image\/(?:gif|jpeg|jpg|png|webp|avif|svg\+xml);base64,/i.test(source)
+      );
+    },
     allowProtocolRelative: false,
   });
   return sanitized.replace(
@@ -219,7 +230,7 @@ export function structuredHtmlToMarkdown(html: string): string {
       const title = node.getAttribute('title');
       const optionalTitle = title ? ` "${title.replace(/(["\\])/g, '\\$1')}"` : '';
       const destination = /[\s()]/.test(source) ? `<${source}>` : source;
-      return `![${alt.replace(/([\[\]])/g, '\\$1')}](${destination}${optionalTitle})`;
+      return `![${escapeMarkdownImageAlt(alt)}](${destination}${optionalTitle})`;
     },
   });
   service.addRule('markoraMathBlock', {
@@ -255,6 +266,10 @@ export function structuredHtmlToMarkdown(html: string): string {
     .replace(/\n{3,}/g, '\n\n')
     .trimEnd();
   return result ? `${result}\n` : '';
+}
+
+function escapeMarkdownImageAlt(value: string): string {
+  return value.replace(/[\\[\]]/g, (character) => `\\${character}`);
 }
 
 export const markdownCoreVersion = '0.1.0';
