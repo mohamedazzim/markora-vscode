@@ -13,8 +13,6 @@ source control, hot exit, diffing, remote workspaces, and file watching.
 This repository contains the published `0.1.0` release. The Marketplace publisher is `MohamedAzzimJ`
 and the public source repository is `mohamedazzim/markora-vscode`.
 
-![Markora document icon](media/icon.png)
-
 ## Features
 
 - Reopen `.md`, `.markdown`, `.mdown`, and `.mkd` files with **Markora Visual Editor**.
