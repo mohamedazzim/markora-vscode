@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.3 - 2026-07-16
+
+### Security
+
+- Fixed GitHub CodeQL alerts #1 (`js/incomplete-sanitization`) and #2 (`js/incomplete-multi-character-sanitization`).
+- Replaced incomplete image-alt escaping with context-specific global escaping for backslashes and brackets.
+- Replaced heading tag-shaped regular-expression removal with parser-aware sanitization.
+- Restricted HTML resource schemes and rejected non-image data URLs.
+- Added adversarial security regression coverage and published the full source-to-sink audit.
+
 ## Unreleased
 
 - Fixed Mermaid visual-node recognition for indented and tilde-fenced `mermaid` blocks so existing diagrams render instead of falling back to generic code blocks.
