@@ -1,5 +1,13 @@
 # Release verification
 
+## Security patch candidate 0.1.3 (2026-07-16)
+
+- Source version: `0.1.3`; publisher remains `MohamedAzzimJ`.
+- CodeQL alerts #1 and #2 are fixed on merged commit `32faa857f5806e2de945e20ce135388c760befd9`.
+- Local focused security suite: 5 passing; full verification: 78 passing; VS Code host/E2E: 16 passing.
+- VSIX and SHA-256 are generated locally after the release build. Marketplace publication is pending a valid
+  publisher-owned `vsce` credential and is not claimed until clean-profile installation is repeated.
+
 ## Patch candidate 0.1.1 (2026-07-16)
 
 - Version and lockfile were updated to `0.1.1`; publisher remains `MohamedAzzimJ`.
