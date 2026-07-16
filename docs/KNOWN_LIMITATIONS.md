@@ -13,4 +13,4 @@
   because the local VS Code updater mutex prevented the isolated host from launching. The development-host suite
   remains available and passed 16 tests with portable VS Code 1.128.1.
 - Uninstall/reinstall and upgrade-path verification are still outstanding for a later release cycle.
-- The `0.1.2` VSIX is built locally, but Marketplace publication is blocked until a valid publisher-owned `vsce` token is authenticated.
+- The `0.1.3` security patch is available from the GitHub release, but Marketplace publication is blocked until a valid publisher-owned `vsce` token is authenticated.

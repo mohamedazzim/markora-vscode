@@ -1,12 +1,17 @@
 # Release verification
 
-## Security patch candidate 0.1.3 (2026-07-16)
+## Security patch release 0.1.3 (2026-07-16)
 
 - Source version: `0.1.3`; publisher remains `MohamedAzzimJ`.
 - CodeQL alerts #1 and #2 are fixed on merged commit `32faa857f5806e2de945e20ce135388c760befd9`.
 - Local focused security suite: 5 passing; full verification: 78 passing; VS Code host/E2E: 16 passing.
-- VSIX and SHA-256 are generated locally after the release build. Marketplace publication is pending a valid
-  publisher-owned `vsce` credential and is not claimed until clean-profile installation is repeated.
+- GitHub Release: [v0.1.3](https://github.com/mohamedazzim/markora-vscode/releases/tag/v0.1.3).
+- VSIX: `release\\markora-markdown-editor-0.1.3.vsix`; downloaded release-asset SHA-256
+  `d57199a96785afa29d99cb2c909d9a0af166d30c0c1168bb00a7ec5fc88c2dee`.
+- The VSIX installed successfully in the normal profile and an isolated clean VS Code profile, both reporting
+  `mohamedazzimj.markora-markdown-editor@0.1.3`.
+- Marketplace publication was attempted with the verified artifact and blocked by the cached credential
+  (`TF400813`); no Marketplace publication is claimed.
 
 ## Patch candidate 0.1.1 (2026-07-16)
 
@@ -21,8 +26,8 @@
 ## Documentation follow-up (2026-07-16)
 
 - The public Marketplace listing remains `0.1.1`; no new release or tag was created for documentation changes.
-- Repository `main` contains a local `0.1.2` candidate and its verification artifacts, but Marketplace publication
-  is not claimed because the cached publisher credential returned `TF400813`.
+- Repository `main` contains the merged `0.1.3` security patch and its verification artifacts, but Marketplace
+  publication is not claimed because the cached publisher credential returned `TF400813`.
 - `media/screenshots/markora-webview.png` is a public-safe repository screenshot. Marketplace screenshot gallery
   metadata remains unchanged until an authenticated publication.
 

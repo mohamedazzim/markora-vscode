@@ -13,8 +13,8 @@ source control, hot exit, diffing, remote workspaces, and file watching.
 
 ![Markora for VS Code webview](media/screenshots/markora-webview.png)
 
-The public Marketplace listing is **0.1.1**. The repository's `main` branch contains a local **0.1.2**
-candidate for subsequent release work; 0.1.2 is not claimed as Marketplace-published.
+The public Marketplace listing remains **0.1.1**. The current GitHub security patch release is **0.1.3**;
+Marketplace publication of 0.1.3 is pending publisher authentication and is not claimed here.
 
 ## Features
 
@@ -35,16 +35,16 @@ Install the current published extension directly from the Marketplace:
 code --install-extension MohamedAzzimJ.markora-markdown-editor
 ```
 
-Or download and install the verified public `0.1.1` VSIX:
+Or download and install the verified public `0.1.3` VSIX:
 
 ```powershell
 Invoke-WebRequest `
-  -Uri "https://github.com/mohamedazzim/markora-vscode/releases/download/v0.1.1/markora-markdown-editor-0.1.1.vsix" `
-  -OutFile ".\markora-markdown-editor-0.1.1.vsix"
-code --install-extension .\markora-markdown-editor-0.1.1.vsix
+  -Uri "https://github.com/mohamedazzim/markora-vscode/releases/download/v0.1.3/markora-markdown-editor-0.1.3.vsix" `
+  -OutFile ".\markora-markdown-editor-0.1.3.vsix"
+code --install-extension .\markora-markdown-editor-0.1.3.vsix
 ```
 
-The matching [SHA-256SUMS.txt](https://github.com/mohamedazzim/markora-vscode/releases/download/v0.1.1/SHA256SUMS.txt)
+The matching [SHA-256SUMS.txt](https://github.com/mohamedazzim/markora-vscode/releases/download/v0.1.3/SHA256SUMS.txt)
 is attached to the release. Open a Markdown file, right-click its tab, choose **Reopen Editor With...**, then
 select **Markora Visual Editor**. Choose **Configure Default Editor for...** in that picker if you want it as
 the default later.
@@ -98,8 +98,8 @@ but no Marketplace screenshot gallery is claimed until a future authenticated pu
 ## Limitations
 
 PDF export is intentionally not bundled. Large documents can be opened in the native Source Editor. Remote
-image download and some virtual-workspace operations remain restricted by workspace trust. A local 0.1.2
-candidate exists, but publication is pending valid publisher-owned `vsce` authentication.
+image download and some virtual-workspace operations remain restricted by workspace trust. The 0.1.3 GitHub
+security release is available; Marketplace publication is pending valid publisher-owned `vsce` authentication.
 
 ## License
 
