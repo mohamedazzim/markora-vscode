@@ -10,6 +10,14 @@
 - Publication attempt was rejected by the cached `vsce` credential with `TF400813`; no Marketplace publication is claimed.
 - The prior `0.1.0` VSIX and public listing were not modified.
 
+## Documentation follow-up (2026-07-16)
+
+- The public Marketplace listing remains `0.1.1`; no new release or tag was created for documentation changes.
+- Repository `main` contains a local `0.1.2` candidate and its verification artifacts, but Marketplace publication
+  is not claimed because the cached publisher credential returned `TF400813`.
+- `media/screenshots/markora-webview.png` is a public-safe repository screenshot. Marketplace screenshot gallery
+  metadata remains unchanged until an authenticated publication.
+
 ## Current run (2026-07-16, Windows x64)
 
 - VS Code detected: 1.128.0 (installed executable); Node.js 24.16.0; npm 11.13.0.
@@ -43,8 +51,9 @@
   `mohamedazzimj.markora-markdown-editor@0.1.0`.
 - `npx @vscode/vsce show MohamedAzzimJ.markora-markdown-editor` reports `0 installs` for this newly published listing;
   the README also carries the official Marketplace installs badge, which resolves dynamically.
-- The `0.1.0` listing currently contains the original icon as its only image. A screenshot gallery is intentionally
-  deferred until a clean, public-safe VS Code capture is available; private desktop screenshots are not published.
+- The `0.1.1` listing currently contains the original icon as its only published image. A public-safe screenshot
+  now exists in the repository, but Marketplace screenshot-gallery metadata is intentionally unchanged until an
+  authenticated publication; private desktop screenshots are not published.
 
 The packaged Extension Development Host suite remains 16 passing tests. A separate Marketplace-installed UI run is
 not claimed: the local VS Code updater mutex prevented launching the isolated host during this verification window.

@@ -4,6 +4,8 @@
 
 - Fixed Mermaid visual-node recognition for indented and tilde-fenced `mermaid` blocks so existing diagrams render instead of falling back to generic code blocks.
 - Added secure relative Markdown-link routing from the webview to VS Code's native document APIs, including heading-anchor navigation and clear warnings for unsupported targets.
+- Reworked the public README with a public-safe webview screenshot, current `0.1.1` Marketplace links, and explicit separation from the local `0.1.2` candidate.
+- Added the open-source documentation audit and retained the no-embedded-logo presentation requested for the GitHub README.
 
 ## 0.1.2 - 2026-07-16
 

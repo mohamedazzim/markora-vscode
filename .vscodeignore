@@ -30,6 +30,7 @@ dist/**
 !dist/*.css
 !dist/*.html
 !media/icon.png
+!media/screenshots/markora-webview.png
 !README.md
 !LICENSE
 !CHANGELOG.md
